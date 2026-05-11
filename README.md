@@ -41,3 +41,18 @@ response.json
 El programa esta conectado a una API de Google Finance, obtiene los datos y los guarda en un archivo JSON para después analizarlos.
 
 
+## Avance 1 – Script 1 v0
+
+### Cómo ejecutar
+```bash
+python script1.py
+
+## Ejemplo de salida
+=== Avance 1: Script 1 v0 - Conexión a API y guardado crudo ===
+
+Conectando a: https://serpapi.com/search?engine=google_finance&q=GOOGL:NASDAQ
+Status code: 400
+Advertencia: La API respondió con código 400. Continuamos guardando la respuesta de error.
+
+✓ Archivo guardado en data/raw/response.json
+
