@@ -6,7 +6,7 @@ Proyecto Integrador de Aprendizaje de la materia de Programación Basica con la 
 
 ## Integrantes del equipo
 - Ana María – Matrícula: 2190413
-- Alexander Flores – Matrícula: 
+- Alexander Flores – Matrícula: 2208864
 
 ## Descripción 
 El proyecto utiliza la API de Google Finance a traves de SerpApi para obtener datos y comparativa sobre el comportamiento financiero de la bolsa de Valores. Los datos que se recopilaran se almacenan en formato JSON y servira como base para su análisis 
