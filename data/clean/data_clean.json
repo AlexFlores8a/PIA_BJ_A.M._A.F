@@ -1,13 +1,13 @@
 {
-    "simbolo": "GOOGL",
-    "nombre": "Alphabet Inc.",
+    "simbolo": "MSFT",
+    "nombre": "Microsoft Corporation",
     "exchange": "NMS",
-    "precio_actual": 387.3500061035156,
-    "precio_anterior": 388.6400146484375,
-    "cambio": -1.290008544921875,
-    "cambio_porcentaje": -0.3319289049761931,
-    "min_dia": 382.7699890136719,
-    "max_dia": 388.5199890136719,
-    "volumen": 25946800,
-    "fecha_consulta": "2026-05-12"
+    "precio_actual": 402.3399963378906,
+    "precio_anterior": 407.7699890136719,
+    "cambio": -5.42999267578125,
+    "cambio_porcentaje": -1.3316312681361135,
+    "min_dia": 401.54998779296875,
+    "max_dia": 404.7760009765625,
+    "volumen": 2181822,
+    "fecha_consulta": "2026-05-13"
 }

@@ -1,0 +1,54 @@
+[
+    {
+        "simbolo": "GOOGL",
+        "nombre": "Alphabet Inc.",
+        "exchange": "NMS",
+        "precio_actual": 401.0,
+        "precio_anterior": 387.3500061035156,
+        "cambio": 13.649993896484375,
+        "cambio_porcentaje": 3.523943121569628,
+        "min_dia": 385.010986328125,
+        "max_dia": 402.25,
+        "volumen": 14833793,
+        "fecha_consulta": "2026-05-13"
+    },
+    {
+        "simbolo": "AAPL",
+        "nombre": "Apple Inc.",
+        "exchange": "NMS",
+        "precio_actual": 299.30999755859375,
+        "precio_anterior": 294.79998779296875,
+        "cambio": 4.510009765625,
+        "cambio_porcentaje": 1.5298541222438164,
+        "min_dia": 293.55999755859375,
+        "max_dia": 300.3699951171875,
+        "volumen": 25680627,
+        "fecha_consulta": "2026-05-13"
+    },
+    {
+        "simbolo": "MSFT",
+        "nombre": "Microsoft Corporation",
+        "exchange": "NMS",
+        "precio_actual": 404.2349853515625,
+        "precio_anterior": 407.7699890136719,
+        "cambio": -3.535003662109375,
+        "cambio_porcentaje": -0.8669111894820813,
+        "min_dia": 401.0299987792969,
+        "max_dia": 406.30999755859375,
+        "volumen": 13385048,
+        "fecha_consulta": "2026-05-13"
+    },
+    {
+        "simbolo": "AMZN",
+        "nombre": "Amazon.com, Inc.",
+        "exchange": "NMS",
+        "precio_actual": 269.52508544921875,
+        "precio_anterior": 265.82000732421875,
+        "cambio": 3.705078125,
+        "cambio_porcentaje": 1.3938296677875504,
+        "min_dia": 263.20001220703125,
+        "max_dia": 270.39959716796875,
+        "volumen": 19976805,
+        "fecha_consulta": "2026-05-13"
+    }
+]

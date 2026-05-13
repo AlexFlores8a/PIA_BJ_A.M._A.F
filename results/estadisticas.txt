@@ -1,7 +1,8 @@
-=== Avance 3 - Estadísticas ===
-Media del cambio porcentual: -0.33%
-Mediana del cambio porcentual: -0.33%
-Moda: -0.3319289049761931
-
-Tabla de frecuencias (exchange):
-NMS: 1
+=== Resultados de Estadísticas ===
+Media: 1.40%
+Mediana: 1.46%
+Moda: 3.523943121569628
+Mínimo: -0.87%
+Máximo: 3.52%
+Rango: 4.39%
+Desviación estándar: 1.80%

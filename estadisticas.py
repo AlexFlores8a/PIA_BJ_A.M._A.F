@@ -3,52 +3,53 @@ import statistics as stats
 from collections import Counter
 import os
 
-# Cargar datos limpios
-try:
-    with open("data/clean/data_clean.json", "r") as f:
-        data = json.load(f)
-except FileNotFoundError:
-    print("Error: No se encuentra data/clean/data_clean.json. Ejecuta primero python main.py GOOGL")
-    exit(1)
+def main():
+    # Cargar datos multi empresa
+    with open("data/clean/multi_clean.json", "r") as f:
+        multi = json.load(f)
 
-# Extraer variable numérica (porcentaje de cambio)
-valores = []
-if data.get("cambio_porcentaje") is not None:
-    valores = [data["cambio_porcentaje"]]
-else:
-    print("No hay datos de cambio_porcentaje en el JSON limpio.")
+    # Crear carpeta results si no existe
+    os.makedirs("results", exist_ok=True)
 
-# Calcular estadísticas
-if valores:
-    media = stats.mean(valores)
-    mediana = stats.median(valores)
-    try:
-        moda = stats.mode(valores)
-    except stats.StatisticsError:
-        moda = "No hay moda única (todos los valores son distintos o lista muy pequeña)"
-    print(f"\n--- Estadísticas del cambio porcentual ---")
-    print(f"Media: {media:.2f}%")
-    print(f"Mediana: {mediana:.2f}%")
-    print(f"Moda: {moda}")
-else:
-    print("\nNo hay suficientes datos numéricos para estadísticas.")
+    cambios = [item["cambio_porcentaje"] for item in multi if item["cambio_porcentaje"] is not None]
 
-# Tabla de frecuencias (por exchange)
-exchange = data.get("exchange", "N/A")
-frecuencia = Counter([exchange])
-print(f"\n--- Tabla de frecuencias (exchange) ---")
-for cat, count in frecuencia.items():
-    print(f"{cat}: {count}")
+    if cambios:
+        media = stats.mean(cambios)
+        mediana = stats.median(cambios)
+        try:
+            moda = stats.mode(cambios)
+        except stats.StatisticsError:
+            moda = "No hay moda única (todos distintos)"
+        minimo = min(cambios)
+        maximo = max(cambios)
+        rango_val = maximo - minimo
+        desviacion = stats.stdev(cambios) if len(cambios) > 1 else 0
 
-# Guardar resultados en results/estadisticas.txt
-os.makedirs("results", exist_ok=True)
-with open("results/estadisticas.txt", "w") as f:
-    f.write("=== Avance 3 - Estadísticas ===\n")
-    f.write(f"Media del cambio porcentual: {media:.2f}%\n" if valores else "Media: No disponible\n")
-    f.write(f"Mediana del cambio porcentual: {mediana:.2f}%\n" if valores else "Mediana: No disponible\n")
-    f.write(f"Moda: {moda}\n")
-    f.write("\nTabla de frecuencias (exchange):\n")
-    for cat, count in frecuencia.items():
-        f.write(f"{cat}: {count}\n")
+        print("\n--- Estadísticas del cambio porcentual ---")
+        print(f"Media: {media:.2f}%")
+        print(f"Mediana: {mediana:.2f}%")
+        print(f"Moda: {moda}")
+        print(f"Mínimo: {minimo:.2f}%")
+        print(f"Máximo: {maximo:.2f}%")
+        print(f"Rango: {rango_val:.2f}%")
+        print(f"Desviación estándar: {desviacion:.2f}%")
+    else:
+        print("No hay datos de cambio porcentual disponibles.")
 
-print("\n✓ Resultados guardados en results/estadisticas.txt")
+    # Guardar resultados en archivo de texto
+    with open("results/estadisticas.txt", "w") as f:
+        f.write("=== Resultados de Estadísticas ===\n")
+        if cambios:
+            f.write(f"Media: {media:.2f}%\n")
+            f.write(f"Mediana: {mediana:.2f}%\n")
+            f.write(f"Moda: {moda}\n")
+            f.write(f"Mínimo: {minimo:.2f}%\n")
+            f.write(f"Máximo: {maximo:.2f}%\n")
+            f.write(f"Rango: {rango_val:.2f}%\n")
+            f.write(f"Desviación estándar: {desviacion:.2f}%\n")
+        else:
+            f.write("No hay datos suficientes.\n")
+    print("\n✓ Resultados guardados en results/estadisticas.txt")
+
+if __name__ == "__main__":
+    main()
