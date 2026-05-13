@@ -5,7 +5,7 @@
 __pycache__/
 *.pyc
 
-# Carpetas de dependencias (si usas virtualenv)
+# Carpetas de dependencias (si se usa virtualenv)
 venv/
 env/
 .venv/
