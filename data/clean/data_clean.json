@@ -1,0 +1,13 @@
+{
+    "simbolo": "N/A",
+    "nombre": "N/A",
+    "exchange": "N/A",
+    "precio_actual": null,
+    "precio_anterior": null,
+    "cambio": null,
+    "cambio_porcentaje": null,
+    "min_dia": null,
+    "max_dia": null,
+    "volumen": null,
+    "fecha_consulta": "2026-05-13 04:03:55 UTC"
+}

@@ -2,23 +2,45 @@ import requests
 import json
 import os
 import sys
+from dotenv import load_dotenv
 
-print("=== Avance 1: Script 1 v0 - Conexión a API y guardado crudo ===\n")
+# Cargar variables del archivo .env
+load_dotenv()
+API_KEY = os.getenv("SERPAPI_API_KEY")
+print(f"DEBUG: API_KEY encontrada = {API_KEY[:5]}..." if API_KEY else "DEBUG: No se encontró API_KEY")
 
-url = "https://serpapi.com/search?engine=google_finance&q=GOOGL:NASDAQ"
+print("=== Avance 2 - Script 1 con API key (preparación) ===\n")
+
+# Obtener la API key desde la variable de entorno
+API_KEY = os.getenv("SERPAPI_API_KEY")
+
+if not API_KEY:
+    print("✗ Error: No se encontró la API key. Asegúrate de tener el archivo .env con SERPAPI_API_KEY=tu_clave")
+    sys.exit(1)
+
+# Parámetros de la consulta a SerpApi
+params = {
+    "engine": "google_finance",
+    "q": "GOOGL:NASDAQ",      # Puedes cambiar por MSFT:NASDAQ, AMZN:NASDAQ, etc.
+    "api_key": API_KEY
+}
+
+url = "https://serpapi.com/search"
 
 try:
-    print(f"Conectando a: {url}")
-    response = requests.get(url, timeout=10)
+    print(f"Conectando a SerpApi con parámetros: {params['q']}")
+    response = requests.get(url, params=params, timeout=15)
     print(f"Status code: {response.status_code}")
 
     if response.status_code == 200:
-        print("¡Conexión exitosa!")
+        print("¡Conexión exitosa! Recibiendo datos reales.")
     else:
-        print(f"Advertencia: La API respondió con código {response.status_code}. Continuamos guardando la respuesta de error.\n")
+        print(f"Advertencia: La API respondió con código {response.status_code}. Puede haber un problema con la key o la consulta.\n")
 
+    # Crear carpeta data/raw si no existe
     os.makedirs("data/raw", exist_ok=True)
 
+    # Guardar la respuesta (JSON) en data/raw/response.json
     try:
         data = response.json()
     except json.JSONDecodeError:
@@ -28,6 +50,7 @@ try:
         json.dump(data, f, indent=4)
 
     print("✓ Archivo guardado en data/raw/response.json")
+    print("Ahora los datos son reales (o un error detallado de SerpApi)")
 
 except requests.exceptions.Timeout:
     print("✗ Error: La API tardó demasiado en responder (timeout).")
