@@ -1,8 +1,7 @@
-=== Avance 3 - Resultados estadÃ­sticos ===
-Variable analizada: cambio_porcentaje
-Media: -0.33
-Mediana: -0.33
+=== Avance 3 - Estadísticas ===
+Media del cambio porcentual: -0.33%
+Mediana del cambio porcentual: -0.33%
 Moda: -0.3319289049761931
 
-=== Tabla de frecuencias (Exchange) ===
+Tabla de frecuencias (exchange):
 NMS: 1
