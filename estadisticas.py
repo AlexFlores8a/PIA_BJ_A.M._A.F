@@ -36,6 +36,7 @@ def main():
     else:
         print("No hay datos de cambio porcentual disponibles.")
 
+HEAD
     # Guardar resultados en archivo de texto
     with open("results/estadisticas.txt", "w") as f:
         f.write("=== Resultados de Estadísticas ===\n")
@@ -53,3 +54,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+print("\n✓ Resultados guardados en results/estadisticas.txt")
+9a955e66ff8669ba2f343da66b6b2e9574d39638
