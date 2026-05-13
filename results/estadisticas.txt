@@ -1,0 +1,8 @@
+=== Avance 3 - Resultados estadísticos ===
+Variable analizada: cambio_porcentaje
+Media: -0.33
+Mediana: -0.33
+Moda: -0.3319289049761931
+
+=== Tabla de frecuencias (Exchange) ===
+NMS: 1

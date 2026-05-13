@@ -1,44 +1,40 @@
-import requests
-import os
-import sys
-from dotenv import load_dotenv
+import yfinance as yf
 
-load_dotenv()
-
-def get_finance_data(symbol="GOOGL:NASDAQ", timeout=15):
-    """
-    Obtiene datos financieros de SerpApi para un símbolo dado.
-    Retorna un dict con la respuesta JSON, o None si hay error.
-    """
-    API_KEY = os.getenv("SERPAPI_API_KEY")
-    if not API_KEY:
-        print("✗ Error: No se encontró la API key. Verifica tu archivo .env")
-        return None
-
-    params = {
-        "engine": "google_finance",
-        "q": symbol,
-        "api_key": API_KEY
-    }
-    url = "https://serpapi.com/search"
-
+def get_finance_data(symbol="GOOGL"):
     try:
-        print(f"Conectando a SerpApi con símbolo: {symbol}")
-        response = requests.get(url, params=params, timeout=timeout)
-        print(f"Status code: {response.status_code}")
-
-        if response.status_code == 200:
-            print("¡Conexión exitosa!")
-            return response.json()
-        else:
-            print(f"Advertencia: La API respondió con código {response.status_code}")
+        print(f"Conectando a Yahoo Finance con símbolo: {symbol}")
+        ticker = yf.Ticker(symbol)
+        info = ticker.info
+        hist = ticker.history(period="2d")
+        if hist.empty:
+            print("No hay datos históricos")
             return None
-    except requests.exceptions.Timeout:
-        print("✗ Error: Timeout - la API tardó demasiado.")
-        return None
-    except requests.exceptions.ConnectionError:
-        print("✗ Error: No se pudo conectar. Verifica internet.")
-        return None
+        ultimo = hist.iloc[-1]
+        precio_actual = float(ultimo["Close"])
+        if len(hist) >= 2:
+            anterior = hist.iloc[-2]["Close"]
+            cambio = precio_actual - anterior
+            cambio_porcentaje = (cambio / anterior) * 100
+            precio_anterior = float(anterior)
+        else:
+            precio_anterior = None
+            cambio = None
+            cambio_porcentaje = None
+        data = {
+            "simbolo": symbol.upper(),
+            "nombre": info.get("longName", "N/A"),
+            "exchange": info.get("exchange", "N/A"),
+            "precio_actual": precio_actual,
+            "precio_anterior": precio_anterior,
+            "cambio": cambio,
+            "cambio_porcentaje": cambio_porcentaje,
+            "min_dia": float(ultimo["Low"]),
+            "max_dia": float(ultimo["High"]),
+            "volumen": int(ultimo["Volume"]),
+            "fecha_consulta": str(ultimo.name.date())
+        }
+        print("¡Datos obtenidos correctamente!")
+        return data
     except Exception as e:
-        print(f"✗ Error inesperado: {e}")
+        print(f"Error en yfinance: {e}")
         return None

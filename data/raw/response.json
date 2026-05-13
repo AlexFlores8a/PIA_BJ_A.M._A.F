@@ -1,21 +1,13 @@
 {
-    "search_metadata": {
-        "id": "6a03f82b73bf59dd53252ef6",
-        "status": "Success",
-        "json_endpoint": "https://serpapi.com/searches/ycrqzt4T3Kzh-snRzXym7w/6a03f82b73bf59dd53252ef6.json",
-        "created_at": "2026-05-13 04:03:55 UTC",
-        "processed_at": "2026-05-13 04:03:55 UTC",
-        "google_finance_url": "https://www.google.com/finance/quote/GOOGL:NASDAQ?hl=en",
-        "raw_html_file": "https://serpapi.com/searches/ycrqzt4T3Kzh-snRzXym7w/6a03f82b73bf59dd53252ef6.html",
-        "total_time_taken": 8.52
-    },
-    "search_parameters": {
-        "engine": "google_finance",
-        "q": "GOOGL:NASDAQ",
-        "hl": "en"
-    },
-    "search_information": {
-        "finance_results_state": "Fully empty"
-    },
-    "error": "Google Finance hasn't returned any results for this query."
+    "simbolo": "GOOGL",
+    "nombre": "Alphabet Inc.",
+    "exchange": "NMS",
+    "precio_actual": 387.3500061035156,
+    "precio_anterior": 388.6400146484375,
+    "cambio": -1.290008544921875,
+    "cambio_porcentaje": -0.3319289049761931,
+    "min_dia": 382.7699890136719,
+    "max_dia": 388.5199890136719,
+    "volumen": 25946800,
+    "fecha_consulta": "2026-05-12"
 }
